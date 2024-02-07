@@ -17,7 +17,7 @@ import java.util.HashMap;
 
 public class CommonUtils {
 	public static final long WAIT = 10;
-	public static final long LongWAIT = 25;
+	public static final long LongWAIT = 40;
 	
 	public HashMap<String, String> parseStringXML(InputStream file) throws Exception{
 		HashMap<String, String> stringMap = new HashMap<String, String>();

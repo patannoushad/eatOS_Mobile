@@ -3,8 +3,9 @@ package com.qa.pages;
 import com.qa.utils.CommonUtils;
 import com.qa.utils.TestData;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.junit.Assert;
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import java.io.FileNotFoundException;
 
@@ -12,17 +13,17 @@ public class LoginScreen extends BasePage  {
 
     CommonUtils utils = new CommonUtils();
 
-    @AndroidFindBy(xpath ="//android.widget.EditText[@hint='Enter email or mobile']")
-    //  @AndroidFindBy(xpath = "//android.widget.EditText[@hint='jhon@email.com']")
-    private WebElement usernameTxtFld;
+    //@AndroidFindBy(xpath ="//android.widget.EditText[@hint='Enter email or mobile']")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@hint='jhon@email.com']")
+    public WebElement usernameTxtFld;
 
-    @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Password']")
-    //  @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Enter Password']")
+    //@AndroidFindBy(xpath = "//android.widget.EditText[@hint='Password']")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Enter Password']")
     private WebElement passwordTxtFld;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"LOG IN\"]")
-    //  @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"SIGN IN\"]")
-    private WebElement loginBtn;
+    //@AndroidFindBy(xpath = "//android.view.View[@content-desc=\"LOG IN\"]")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='SIGN IN']")
+    public WebElement loginBtn;
 
 
 
@@ -62,17 +63,30 @@ public class LoginScreen extends BasePage  {
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='9']")
     private WebElement Pin9;
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='0']")
-    private WebElement Pin0;
+    public WebElement Pin0;
 
     @AndroidFindBy (xpath = "//android.view.View[@content-desc='ENTER']")
     private WebElement enter;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.eatos.pos:id/ib_core_tv_title\"]")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='com.eatos.pos:id/ib_core_tv_title']")
     private WebElement instaBug;
     @AndroidFindBy(accessibility = "Custom Item Tab 2 of 2")
     private WebElement customItem;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Forgot Your Password?\"]")
-    private WebElement creatAnAccountButton;
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='CREATE AN ACCOUNT']")
+    public WebElement creatAnAccountButton;
+
+    @AndroidFindBy(xpath = "//android.widget.Toast[@text='Login Failed, Please Check your Email and Password']")
+    private WebElement invalidUsername;
+    @AndroidFindBy(xpath = "//android.widget.Toast[@text='Login Failed, Please Check your Email and Password']")
+    private WebElement invalidPassword;
+    @AndroidFindBy(xpath = "//android.widget.Toast[@text='Email Or Password can not be empty']")
+    private WebElement emptyUsername;
+    @AndroidFindBy(xpath = "//android.widget.Toast[@text='Email Or Password can not be empty']")
+    private WebElement emptyPassword;
+    @AndroidFindBy (xpath = "//android.widget.Toast[@text='Email Or Password can not be empty']")
+    private WebElement emptyFields;
+    @AndroidFindBy (xpath = "//android.widget.Toast[@text='Email Or Password can not be empty']")
+    private WebElement validCredentials;
 
     public void createAnAccount(){
         clickOnElement(creatAnAccountButton);
@@ -103,28 +117,137 @@ public class LoginScreen extends BasePage  {
     }
 
     public void enterUserName(String username)  {
-        waitForVisibilityOfElement(instaBug);
-        clickOnElement(usernameTxtFld);
-        clearText(usernameTxtFld);
-        typeTextIntoElement(usernameTxtFld, username, "login with " + username);
+
+        if (username.equals("np3@eigital.com")){
+            clickOnElement(usernameTxtFld);
+            //waitForVisibilityOfElement(instaBug);
+            waitForVisibility(instaBug);
+            clearText(usernameTxtFld);
+            typeTextIntoElement(usernameTxtFld, username, "login with " + username);
+        } else if (username.equals("Invalid@gmail.com")) {
+            clickOnElement(usernameTxtFld);
+            clearText(usernameTxtFld);
+            typeTextIntoElement(usernameTxtFld, username, "login with " + username);
+        }
     }
     public void enterPassword(String password) {
+        if (password.equalsIgnoreCase("@Password123")){
+            clickOnElement(passwordTxtFld);
+            clearText(passwordTxtFld);
+            typeTextIntoElement(passwordTxtFld, password, "password is " + password);
+        } else if (password.equalsIgnoreCase("InvalidPawd")) {
+            clickOnElement(passwordTxtFld);
+            clearText(passwordTxtFld);
+            typeTextIntoElement(passwordTxtFld, password, "password is " + password);
+
+        }
+
+    }
+    public void pressLoginBtn() {
+        clickOnElement(loginBtn, "press login button");
+    }
+    public void login(String username, String password) {
+
+        clickOnElement(usernameTxtFld);
+       // waitForVisibility(instaBug);
+        clearText(usernameTxtFld);
+        typeTextIntoElement(usernameTxtFld, username, "login with " + username);
         clickOnElement(passwordTxtFld);
         clearText(passwordTxtFld);
         typeTextIntoElement(passwordTxtFld, password, "password is " + password);
     }
-    public void pressLoginBtn() {
-        clickOnElement(loginBtn, "press login button");
-        new ProductsScreen();
-    }
-    public void login(String username, String password) {
-        if (instaBug().isDisplayed()){
-            waitForVisibility(instaBug);
+    public void enterCred(@NotNull String val) {
+
+        switch (val) {
+            case "InvalidUsername" -> {
+                clickOnElement(usernameTxtFld);
+                waitForVisibility(instaBug);
+                clearText(usernameTxtFld);
+                typeTextIntoElement(usernameTxtFld, "np33@eigital.com");
+                clickOnElement(passwordTxtFld);
+                clearText(passwordTxtFld);
+                typeTextIntoElement(passwordTxtFld, "@Password123");
+            }
+            case "InvalidPassword" -> {
+                waitForVisibility(usernameTxtFld);
+                clickOnElement(usernameTxtFld);
+                clearText(usernameTxtFld);
+                typeTextIntoElement(usernameTxtFld, "np3@eigital.com");
+                clickOnElement(passwordTxtFld);
+                clearText(passwordTxtFld);
+                typeTextIntoElement(passwordTxtFld, "@Password1234");
+            }
+            case "EmptyUsername" -> {
+                clickOnElement(usernameTxtFld);
+                clearText(usernameTxtFld);
+                clickOnElement(passwordTxtFld);
+                clearText(passwordTxtFld);
+                typeTextIntoElement(passwordTxtFld, "@Password123");
+            }
+            case "EmptyPassword" -> {
+                clickOnElement(usernameTxtFld);
+                clearText(usernameTxtFld);
+                typeTextIntoElement(usernameTxtFld, "np33@eigital.com");
+                clickOnElement(passwordTxtFld);
+                clearText(passwordTxtFld);
+            }
+            case "EmptyFields" -> {
+                clickOnElement(usernameTxtFld);
+                clearText(usernameTxtFld);
+                clickOnElement(passwordTxtFld);
+                clearText(passwordTxtFld);
+            }
+            case "ValidCredentials" -> {
+                clickOnElement(usernameTxtFld);
+                clearText(usernameTxtFld);
+                typeTextIntoElement(usernameTxtFld, "np3@eigital.com");
+                clickOnElement(passwordTxtFld);
+                clearText(passwordTxtFld);
+                typeTextIntoElement(passwordTxtFld, "@Password123");
+                clickOnElement(loginBtn);
+                longwaitForVisibility(Pin1);
+                clickOnElement(Pin1);
+                clickOnElement(Pin1);
+                clickOnElement(Pin1);
+                clickOnElement(Pin1);
+                clickOnElement(enter);
+            }
+        }if(!val.equalsIgnoreCase("ValidCredentials")){
+            clickOnElement(loginBtn);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
-        clickOnElement(usernameTxtFld);
-        typeTextIntoElement(usernameTxtFld,username);
-        clickOnElement(passwordTxtFld);
-        typeTextIntoElement(passwordTxtFld,password);
-        pressLoginBtn();
+    }
+    public void loginErrorMsg(String val){
+
+        if(val.equalsIgnoreCase("InvalidUsername")){
+            String Expected = "Login Failed, Please Check your Email and Password";
+            Assert.assertEquals(Expected,invalidUsername.getText());
+        }
+        else if (val.equalsIgnoreCase("InvalidPassword")) {
+            String Expected = "Login Failed, Please Check your Email and Password";
+            Assert.assertEquals(Expected,invalidPassword.getText());
+        }
+        else if (val.equalsIgnoreCase("EmptyUsername")) {
+            String Expected = "Email Or Password can not be empty";
+            Assert.assertEquals(Expected,emptyUsername.getText());
+        }
+        else if (val.equalsIgnoreCase("EmptyPassword")) {
+            String Expected = "Email Or Password can not be empty";
+            Assert.assertEquals(Expected,emptyPassword.getText());
+        }
+        else if (val.equalsIgnoreCase("EmptyFields")) {
+            String errTest = emptyFields.getText();
+            String Expected = "Email Or Password can not be empty";
+            Assert.assertEquals(Expected,errTest);
+        }
+        else if (val.equalsIgnoreCase("ValidCredentials")) {
+//            String Expected = "PRODUCTS";
+//            Assert.assertEquals(Expected,new ProductsScreen().getTitle());
+            Assert.assertTrue(new NewOrderScreen().newOrderModule.isDisplayed());
+        }
     }
 }

@@ -5,6 +5,7 @@ import com.qa.utils.GlobalParams;
 import com.qa.utils.CommonUtils;
 import io.appium.java_client.*;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.apache.poi.ss.formula.functions.T;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,9 +24,11 @@ public class BasePage {
     private AppiumDriver driver;
     CommonUtils utils = new CommonUtils();
 
+
     public BasePage(){
         this.driver = new DriverManager().getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     public void waitForVisibility(WebElement e) {
@@ -142,6 +145,11 @@ public class BasePage {
             ((InteractsWithApps) driver).activateApp(driver.getCapabilities().
                     getCapability("appPackage").toString());
         }
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public WebElement andScrollToElementUsingUiScrollable(String childLocAttr, String childLocValue) {
@@ -165,6 +173,16 @@ public class BasePage {
 
 
 
+        public WebElement waitForElement(WebElement element) {
+        WebElement webElement = null;
+        try {
+            WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(15));
+            webElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return webElement;
+    }
 /*    public MobileElement scrollToElement(MobileElement element, String direction) throws Exception {
         Dimension size = driver.manage().window().getSize();
         int startX = (int) (size.width * 0.5);

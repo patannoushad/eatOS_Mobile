@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 
 public class NewOrderScreen extends BasePage{
 
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@bounds='[0,205][96,349]']")
+    public WebElement newOrderModule;
+
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[4]/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View[1]")
     private WebElement product;
 

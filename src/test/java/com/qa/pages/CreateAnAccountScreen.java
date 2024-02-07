@@ -27,14 +27,14 @@ public class CreateAnAccountScreen extends BasePage {
             clickOnElement(restaurantNameField);
             typeTextIntoElement(restaurantNameField,"Yonox");
         }else if (val.equals("emptyLastName")){
-            if(val.equals("emptyFirstName")){
+
                 clickOnElement(firstNameField);
                 typeTextIntoElement(firstNameField,"Login");
                 clickOnElement(emailAddressField);
                 typeTextIntoElement(emailAddressField,"abc@gmail.com");
                 clickOnElement(restaurantNameField);
                 typeTextIntoElement(restaurantNameField,"Yonox");
-            }
+
         }
     }
 

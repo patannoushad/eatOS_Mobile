@@ -15,8 +15,9 @@ public class Hooks {
     @Before
     public void initialize()  {
         BasePage basePage = new BasePage();
-        //basePage.closeApp();
-        //basePage.launchApp();
+        basePage.closeApp();
+        //basePage.removeApp();
+        basePage.launchApp();
         new VideoManager().startRecording();
     }
 
@@ -27,5 +28,14 @@ public class Hooks {
             scenario.attach(screenshot, "image/png", scenario.getName());
         }
         new VideoManager().stopRecording(scenario.getName());
+        BasePage basePage = new BasePage();
+        //basePage.removeApp();
+        basePage.closeApp();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 }

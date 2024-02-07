@@ -3,16 +3,14 @@ package com.qa.runners;
 import com.qa.utils.DriverManager;
 import com.qa.utils.GlobalParams;
 import com.qa.utils.ServerManager;
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
 import org.apache.logging.log4j.ThreadContext;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
-import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
+import static io.cucumber.testng.CucumberOptions.SnippetType.CAMELCASE;
 
-@RunWith(Cucumber.class)
 @CucumberOptions(
 
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
@@ -20,9 +18,9 @@ import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
         ,glue = {"com.qa.stepdef"}
         ,snippets = CAMELCASE
         ,monochrome=true
-        ,tags = "@menuCategory"
+        ,tags = "@login or @restaurant or @timedPricing"
 )
-public class MyRunnerTest {
+public class MyRunnerTest extends AbstractTestNGCucumberTests {
 
     @BeforeClass
     public static void initialize() throws Exception {
@@ -39,7 +37,7 @@ public class MyRunnerTest {
     public static void quit(){
         DriverManager driverManager = new DriverManager();
         if(driverManager.getDriver() != null){
- //           driverManager.getDriver().quit();
+            driverManager.getDriver().quit();
             driverManager.setDriver(null);
         }
         ServerManager serverManager = new ServerManager();

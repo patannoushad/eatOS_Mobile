@@ -4,7 +4,7 @@ import com.qa.pages.LoginScreen;
 import com.qa.pages.ProductsScreen;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
+import org.testng.Assert;
 
 public class LoginStepDef {
 
@@ -42,5 +42,17 @@ public class LoginStepDef {
     @Then("I should see Products page with title {string}")
     public void iShouldSeeProductsPageWithTitle(String title) {
         Assert.assertEquals(new ProductsScreen().getTitle(), title);
+    }
+
+
+
+    @When("User enter {string} Credentials")
+    public void userEnter_Condition_Credentials(String val) {
+        new LoginScreen().enterCred(val);
+    }
+
+    @Then("User gets {string} errorMsg")
+    public void userGets_Condition_ErrMsg(String val) {
+        new LoginScreen().loginErrorMsg(val);
     }
 }
