@@ -1,6 +1,28 @@
 
 Feature: Login scenarios
 
+
+  @createAnAccount
+  Scenario Outline: Create An Account With Negative Scenario
+    Given User opens the Applications
+    And Tap on Create an Account
+    When User enter "<condition>" in Create An Account screen
+    Then User should get a warning message "<condition>"
+    Examples:
+      | condition     |
+      | VerifyTitle   |
+      | emptyFirstName|
+      | emptyLastName |
+      | emptyEmail    |
+      | emptyPhoneNum |
+      | emptyPassword |
+      | restaurantName|
+      | allEmptyFields|
+
+
+
+
+
   Scenario Outline: Validate Login Functionality with Valid PIN
     When User enter username as "<username>"
     And User enter password as "<password>"

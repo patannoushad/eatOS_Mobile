@@ -1,6 +1,6 @@
 package com.qa.pages;
 
-import com.qa.utils.CommonUtils;
+
 import com.qa.utils.TestData;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.jetbrains.annotations.NotNull;
@@ -11,20 +11,189 @@ import java.io.FileNotFoundException;
 
 public class LoginScreen extends BasePage  {
 
-    CommonUtils utils = new CommonUtils();
+    //Create An Account
 
-    //@AndroidFindBy(xpath ="//android.widget.EditText[@hint='Enter email or mobile']")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='CREATE AN ACCOUNT']")
+    private WebElement CreateAnAccount;
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='CREATE AN ACCOUNT']")
+    public WebElement creatAnAccountButton;
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='CREATE AN ACCOUNT']")
+    private WebElement CreateAnAccountButton;
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Create An Account']")
+    private WebElement createAnActTitle;
+    @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Enter First Name']")
+    private WebElement firstNameField;
+    @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Enter Last Name']")
+    private WebElement lastNameField;
+    @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Enter Email Address']")
+    private WebElement emailAddressField;
+    @AndroidFindBy(xpath = "//android.widget.EditText[@hint='(123) 456 7890']")
+    private WebElement phoneNumField;
+    @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Enter Restaurant Name']")
+    private WebElement restaurantNameField;
+    @AndroidFindBy(xpath = "(//android.widget.Button)[2]")
+    private WebElement restaurantTypeField;
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='Seller Agreement ']")
+    private WebElement sellerAgreement;
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='e-Sign Consent ']")
+    private WebElement eSignConsent;
+
+    @AndroidFindBy(xpath = "//android.widget.Toast[@text='Please enter your First Name!']")
+    private WebElement emptyFirstnameErrMsg;
+    @AndroidFindBy(xpath = "//android.widget.Toast[@text='Please enter your Last Name!']")
+    private WebElement emptyLastErrMsg;
+    @AndroidFindBy(xpath = "//android.widget.Toast[@text='Please enter your Email!']")
+    private WebElement emptyEmailErrMsg;
+    @AndroidFindBy(xpath = "//android.widget.Toast[@text='Please make sure to fill out all necessary information']")
+    private WebElement allNecessaryInfoErrMsg;
+    @AndroidFindBy(xpath = "//android.widget.Toast[@text='Please enter your Email!']")
+    private WebElement allEmptyErrMsg;
+
+
+    public void tapOnCreateAnAccount(){
+        clickOnElement(CreateAnAccount);
+    }
+
+    public void enterCreateAnAccountDetails(String val){
+
+        if(val.equals("emptyFirstName")){
+
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            clickOnElement(lastNameField);
+            typeTextIntoElement(lastNameField,"Manager");
+            clickOnElement(emailAddressField);
+            typeTextIntoElement(emailAddressField,"abc@gmail.com");
+            clickOnElement(phoneNumField);
+            typeTextIntoElement(phoneNumField,"1234567899");
+            clickOnElement(passwordTxtFld);
+            typeTextIntoElement(passwordTxtFld,"@Password1");
+            clickOnElement(restaurantNameField);
+            typeTextIntoElement(restaurantNameField,"Yonox");
+            clickOnElement(CreateAnAccountButton);
+
+        }else if (val.equals("emptyLastName")){
+
+            clickOnElement(firstNameField);
+            typeTextIntoElement(firstNameField,"Login");
+            clickOnElement(emailAddressField);
+            typeTextIntoElement(emailAddressField,"abc@gmail.com");
+            clickOnElement(phoneNumField);
+            typeTextIntoElement(phoneNumField,"1234567899");
+            clickOnElement(passwordTxtFld);
+            typeTextIntoElement(passwordTxtFld,"@Password1");
+            clickOnElement(restaurantNameField);
+            typeTextIntoElement(restaurantNameField,"Yonex");
+            clickOnElement(CreateAnAccountButton);
+
+        } else if (val.equalsIgnoreCase("emptyEmail")) {
+
+            clickOnElement(firstNameField);
+            typeTextIntoElement(firstNameField,"Login");
+            clickOnElement(lastNameField);
+            typeTextIntoElement(lastNameField,"Manager");
+            clickOnElement(emailAddressField);
+            typeTextIntoElement(emailAddressField,"abc@gmail.com");
+            clickOnElement(phoneNumField);
+            typeTextIntoElement(phoneNumField,"1234567899");
+            clickOnElement(passwordTxtFld);
+            typeTextIntoElement(passwordTxtFld,"@Password1");
+            clickOnElement(restaurantNameField);
+            typeTextIntoElement(restaurantNameField,"Yonox");
+            clickOnElement(CreateAnAccountButton);
+
+        } else if (val.equalsIgnoreCase("emptyPhoneNum")) {
+
+            clickOnElement(firstNameField);
+            typeTextIntoElement(firstNameField,"Login");
+            clickOnElement(lastNameField);
+            typeTextIntoElement(lastNameField,"Manager");
+            clickOnElement(emailAddressField);
+            typeTextIntoElement(emailAddressField,"abc@gmail.com");
+            clickOnElement(phoneNumField);
+            typeTextIntoElement(phoneNumField,"1234567899");
+            clickOnElement(passwordTxtFld);
+            typeTextIntoElement(passwordTxtFld,"@Password1");
+            clickOnElement(restaurantNameField);
+            typeTextIntoElement(restaurantNameField,"Yonox");
+            clickOnElement(CreateAnAccountButton);
+
+        } else if (val.equalsIgnoreCase("emptyPassword")) {
+
+            clickOnElement(firstNameField);
+            typeTextIntoElement(firstNameField,"Login");
+            clickOnElement(lastNameField);
+            typeTextIntoElement(lastNameField,"Manager");
+            clickOnElement(emailAddressField);
+            typeTextIntoElement(emailAddressField,"abc@gmail.com");
+            clickOnElement(phoneNumField);
+            typeTextIntoElement(phoneNumField,"1234567899");
+            clickOnElement(passwordTxtFld);
+            typeTextIntoElement(passwordTxtFld,"@Password1");
+            clickOnElement(restaurantNameField);
+            typeTextIntoElement(restaurantNameField,"Yonox");
+            clickOnElement(CreateAnAccountButton);
+
+        } else if (val.equalsIgnoreCase("restaurantName")) {
+
+            clickOnElement(firstNameField);
+            typeTextIntoElement(firstNameField,"Login");
+            clickOnElement(lastNameField);
+            typeTextIntoElement(lastNameField,"Manager");
+            clickOnElement(emailAddressField);
+            typeTextIntoElement(emailAddressField,"abc@gmail.com");
+            clickOnElement(phoneNumField);
+            typeTextIntoElement(phoneNumField,"1234567899");
+            clickOnElement(passwordTxtFld);
+            typeTextIntoElement(passwordTxtFld,"@Password1");
+            clickOnElement(restaurantNameField);
+            typeTextIntoElement(restaurantNameField,"Yonox");
+            clickOnElement(CreateAnAccountButton);
+        }else if (val.equalsIgnoreCase("allEmptyFields")) {
+
+            clickOnElement(CreateAnAccountButton);
+        }
+    }
+
+    public void createAnAccountErrMsg(String val){
+        if(val.equalsIgnoreCase("VerifyTitle")){
+            Assert.assertTrue( createAnActTitle.isDisplayed());
+        } else if (val.equalsIgnoreCase("emptyFirstName")){
+
+            Assert.assertTrue(emptyFirstnameErrMsg.isDisplayed());
+        } else if (val.equalsIgnoreCase("emptyLastName")) {
+
+            Assert.assertTrue(emptyLastErrMsg.isDisplayed());
+        } else if (val.equalsIgnoreCase("emptyEmail")) {
+
+            Assert.assertTrue(emptyEmailErrMsg.isDisplayed());
+        } else if (val.equalsIgnoreCase("emptyPhoneNum")) {
+
+            Assert.assertTrue(allNecessaryInfoErrMsg.isDisplayed());
+        }else if (val.equalsIgnoreCase("emptyPassword")) {
+
+            Assert.assertTrue(allNecessaryInfoErrMsg.isDisplayed());
+        } else if (val.equalsIgnoreCase("restaurantName")) {
+
+            Assert.assertTrue(allNecessaryInfoErrMsg.isDisplayed());
+        }else if (val.equalsIgnoreCase("allEmptyFields")) {
+
+            Assert.assertTrue(allEmptyErrMsg.isDisplayed());
+        }
+    }
+
+    //login
+
     @AndroidFindBy(xpath = "//android.widget.EditText[@hint='jhon@email.com']")
     public WebElement usernameTxtFld;
-
-    //@AndroidFindBy(xpath = "//android.widget.EditText[@hint='Password']")
     @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Enter Password']")
     private WebElement passwordTxtFld;
-
-    //@AndroidFindBy(xpath = "//android.view.View[@content-desc=\"LOG IN\"]")
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='SIGN IN']")
     public WebElement loginBtn;
-
 
 
     public LoginScreen() {
@@ -38,10 +207,10 @@ public class LoginScreen extends BasePage  {
 
 
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Email and Password cannot be empty.\"]")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Email and Password cannot be empty.']")
     private WebElement errTxt;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Point Of Purchase\"]")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Point Of Purchase']")
     private WebElement Title;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='1']")
@@ -72,8 +241,6 @@ public class LoginScreen extends BasePage  {
     @AndroidFindBy(accessibility = "Custom Item Tab 2 of 2")
     private WebElement customItem;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc='CREATE AN ACCOUNT']")
-    public WebElement creatAnAccountButton;
 
     @AndroidFindBy(xpath = "//android.widget.Toast[@text='Login Failed, Please Check your Email and Password']")
     private WebElement invalidUsername;
@@ -99,7 +266,6 @@ public class LoginScreen extends BasePage  {
         return instaBug;
     }
 
-  //  String toastMsg = erroMsg.getText();
     public String getErrTxt() {
         return erroMsg.getText();
     }

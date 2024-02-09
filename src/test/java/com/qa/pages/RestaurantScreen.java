@@ -16,6 +16,8 @@ public class RestaurantScreen extends BasePage{
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='New Customer']/android.widget.ImageView")
     private WebElement closeDialogRestaurant;
+    @AndroidFindBy(xpath = "(//android.widget.ImageView)[1]")
+    private WebElement closeDialogRes;
 
 
     public void onRestaurant() {
@@ -128,11 +130,13 @@ public class RestaurantScreen extends BasePage{
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'first name')]")
     private WebElement emptyScheduleInfoNameErrMsg;
 
-    @AndroidFindBy(xpath = "//android.view.View[@bounds='[1638,279][1677,317]']")
+    @AndroidFindBy(xpath = "(//android.view.View)[33]")
     private WebElement searchBarIconScheduleInfo;
 
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'Schedule one')]")
     private WebElement scheduleInfoFirstField;
+
+
 
 
     public void addScheduleInfoDetails(String val){
@@ -151,7 +155,7 @@ public class RestaurantScreen extends BasePage{
             }
             case "EmptyScheduleInfoName" -> clickOnElement(scheduleInfoNameField);
         }
-        clickOnElement(closeDialogRestaurant);
+        clickOnElement(closeDialogRes);
     }
     public void getScheduleInfoErrorMsg(String val){
         if(val.equals("ValidScheduleInfoDetails")){
@@ -213,7 +217,7 @@ public class RestaurantScreen extends BasePage{
             }
             case "EmptyTimedPricingName" -> clickOnElement(timedPricingNameField);
         }
-        clickOnElement(menuManagement.closeDialog);
+        clickOnElement(closeDialogRes);
     }
     public void getTimedPricingErrorMsg(String val){
         if(val.equals("ValidTimedPricingDetails")){
