@@ -161,28 +161,36 @@ public class LoginScreen extends BasePage  {
 
     public void createAnAccountErrMsg(String val){
         if(val.equalsIgnoreCase("VerifyTitle")){
-            Assert.assertTrue( createAnActTitle.isDisplayed());
+
+            Assert.assertTrue(createAnActTitle.isDisplayed());
         } else if (val.equalsIgnoreCase("emptyFirstName")){
 
-            Assert.assertTrue(emptyFirstnameErrMsg.isDisplayed());
+            String Expected = "Please enter your First Name!";
+            Assert.assertEquals(Expected,emptyFirstnameErrMsg.getText());
         } else if (val.equalsIgnoreCase("emptyLastName")) {
 
-            Assert.assertTrue(emptyLastErrMsg.isDisplayed());
+            String Expected = "Please enter your Last Name!";
+            Assert.assertEquals(Expected,emptyLastErrMsg.getText());
         } else if (val.equalsIgnoreCase("emptyEmail")) {
 
-            Assert.assertTrue(emptyEmailErrMsg.isDisplayed());
+            String Expected = "Please enter your Email!";
+            Assert.assertEquals(Expected,emptyEmailErrMsg.getText());
         } else if (val.equalsIgnoreCase("emptyPhoneNum")) {
 
-            Assert.assertTrue(allNecessaryInfoErrMsg.isDisplayed());
+            String Expected = "Please make sure to fill out all necessary information";
+            Assert.assertEquals(Expected,allNecessaryInfoErrMsg.getText());
         }else if (val.equalsIgnoreCase("emptyPassword")) {
 
-            Assert.assertTrue(allNecessaryInfoErrMsg.isDisplayed());
+            String Expected = "Please make sure to fill out all necessary information";
+            Assert.assertEquals(Expected,allNecessaryInfoErrMsg.getText());
         } else if (val.equalsIgnoreCase("restaurantName")) {
 
-            Assert.assertTrue(allNecessaryInfoErrMsg.isDisplayed());
+            String Expected = "Please make sure to fill out all necessary information";
+            Assert.assertEquals(Expected,allNecessaryInfoErrMsg.getText());
         }else if (val.equalsIgnoreCase("allEmptyFields")) {
 
-            Assert.assertTrue(allEmptyErrMsg.isDisplayed());
+            String Expected = "Please enter your Email!";
+            Assert.assertEquals(Expected,allEmptyErrMsg.getText());
         }
     }
 
@@ -204,8 +212,6 @@ public class LoginScreen extends BasePage  {
         passwordTxtFld.sendKeys(TestData.get("password"));
         clickOnElement(loginBtn);
     }
-
-
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Email and Password cannot be empty.']")
     private WebElement errTxt;
@@ -260,7 +266,7 @@ public class LoginScreen extends BasePage  {
     }
 
 
-    @AndroidFindBy(xpath = "//android.widget.Toast[@text=\"Email and Password cannot be empty.\"]")
+    @AndroidFindBy(xpath = "//android.widget.Toast[@text='Email and Password cannot be empty.']")
     private WebElement erroMsg;
     public WebElement instaBug(){
         return instaBug;
@@ -327,7 +333,6 @@ public class LoginScreen extends BasePage  {
         switch (val) {
             case "InvalidUsername" -> {
                 clickOnElement(usernameTxtFld);
-                waitForVisibility(instaBug);
                 clearText(usernameTxtFld);
                 typeTextIntoElement(usernameTxtFld, "np33@eigital.com");
                 clickOnElement(passwordTxtFld);

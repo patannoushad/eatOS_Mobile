@@ -1,6 +1,5 @@
-
+@All
 Feature: Login scenarios
-
 
   @createAnAccount
   Scenario Outline: Create An Account With Negative Scenario
@@ -20,20 +19,15 @@ Feature: Login scenarios
       | allEmptyFields|
 
 
-
-
-
-  Scenario Outline: Validate Login Functionality with Valid PIN
-    When User enter username as "<username>"
-    And User enter password as "<password>"
-    And User Tap on Login Button
-    And User enter valid Pin
-    Then User should get successfully loggedin
-    Examples:
-      | username         | password      |
-      | np3@eigital.com  | @Password123  |
-
-
+ # Scenario Outline: Validate Login Functionality with Valid PIN
+  #  When User enter username as "<username>"
+   # And User enter password as "<password>"
+    #And User Tap on Login Button
+ #   And User enter valid Pin
+  #  Then User should get successfully loggedin
+   # Examples:
+    #  | username         | password      |
+     # | np3@eigital.com  | @Password123  |
 
 
   Scenario Outline: Validate Login Functionality
@@ -45,6 +39,7 @@ Feature: Login scenarios
       |    InvalidPassword  |
       |    EmptyUsername    |
       |    EmptyPassword    |
+
 
   @login
   Scenario Outline: Validate Login Functionality

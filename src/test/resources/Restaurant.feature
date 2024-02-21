@@ -1,6 +1,7 @@
-
+@All
 Feature: Restaurant
 
+  @guestbook
   Scenario Outline: Validate Guestbook Details for Different <condition>
     Given User is on Restaurant  Screen
     When User adds "<condition>" Guestbook details
@@ -17,6 +18,7 @@ Feature: Restaurant
     When User Search GuestBook on Search Bar
     Then User Able to Search Item on GuestBook
 
+    @scheduleInfo
   Scenario Outline: Validate Schedule Info Details for Different <condition>
     Given User is on Restaurant  Screen
     When User adds "<condition>" Schedule Info details
@@ -31,6 +33,13 @@ Feature: Restaurant
     Given User is on Restaurant  Screen
     When User Search Schedule Info on Search Bar
     Then User Able to Search Item on Schedule Info
+
+  @locationSettings
+  Scenario: Verify Buttons on Location Settings
+    Given User is on Restaurant  Screen
+    When User Tap on Buttons
+    Then Button should clickable
+
 
 
     @timedPricing

@@ -123,9 +123,9 @@ public class MenuManagementScreen extends BasePage{
 
         }
         else if (val.equalsIgnoreCase("EmptyMenuName")) {
+
             Assert.assertTrue(emptyMenuErrMsg.isDisplayed());
-        }
-        else if (val.equalsIgnoreCase("NumMenuName")) {
+        } else if (val.equalsIgnoreCase("NumMenuName")) {
 
         }
     }
@@ -146,7 +146,6 @@ public class MenuManagementScreen extends BasePage{
     public void validateSearchMenu(){
         Assert.assertTrue(menuFirstField.isDisplayed());
     }
-
 
     // ----> Categories
 

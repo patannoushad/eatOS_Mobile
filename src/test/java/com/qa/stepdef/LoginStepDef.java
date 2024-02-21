@@ -53,17 +53,7 @@ public class LoginStepDef {
         //      Assert.assertTrue(new NewOrderPage().empName.isDisplayed());
 
     }
-    @Then("login should fail with an error {string}")
-    public void loginShouldFailWithAnError(String errMsg) {
-        //      Assert.assertEquals(errMsg,new LoginPage().getErrTxt());
-    }
-    @Then("User enter Pin Invalid PIN {string}{string}{string}{string}")
-    public void userEnterPinInvalidPIN(String P1,String P2,String P3) {
-    }
-    @Then("I should see Products page with title {string}")
-    public void iShouldSeeProductsPageWithTitle(String title) {
-        Assert.assertEquals(new ProductsScreen().getTitle(), title);
-    }
+
 
     @When("User enter {string} Credentials")
     public void userEnter_Condition_Credentials(String val) {

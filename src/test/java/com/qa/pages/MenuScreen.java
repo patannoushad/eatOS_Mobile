@@ -9,6 +9,7 @@ public class MenuScreen extends BasePage{
 	AppiumDriver driver;
 
 
+
 	@AndroidFindBy (xpath="//android.view.ViewGroup[@content-desc=\"test-Menu\"]/android.view.ViewGroup/android.widget.ImageView\n" +
 			"")
 	@iOSXCUITFindBy (xpath="//XCUIElementTypeOther[@name=\"test-Menu\"]/XCUIElementTypeOther")

@@ -51,6 +51,12 @@ public class RestaurantStepDef {
         new RestaurantScreen().validateSearchScheduleInfo();
     }
 
+    //Location Settings
+
+    @When("User Tap on Buttons")
+    public void userTapOnButtons(){
+
+    }
     //Timed Pricing
 
     @When("User adds {string} Timed Pricing details")

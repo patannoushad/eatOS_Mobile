@@ -26,9 +26,9 @@ public class CapabilitiesManager {
                     caps.setCapability("systemPort", params.getSystemPort());
                     caps.setCapability("chromeDriverPort", params.getChromeDriverPort());
                     //String androidAppUrl = getClass().getResource(PropertyManager.getProperty("androidAppLocation")).getFile();
-                    //String androidAppUrl = PropertyManager.getProperty("androidAppUrl");
-                    String androidAppUrl = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
-                            + File.separator + "resources" + File.separator + "apps" + File.separator + "eatOS.Staging.apk";
+                    String androidAppUrl = PropertyManager.getProperty("androidAppUrl");
+//                    String androidAppUrl = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
+//                            + File.separator + "resources" + File.separator + "apps" + File.separator + "eatOS.Staging.apk";
                     utils.log().info("appUrl is" + androidAppUrl);
                     caps.setCapability("app", androidAppUrl);
                     caps.setCapability("autoGrantPermissions", true);

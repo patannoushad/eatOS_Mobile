@@ -1,4 +1,4 @@
-@menuManagement
+@menuManagement @All
 Feature: Menu Management
 
   @menu
