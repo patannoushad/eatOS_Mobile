@@ -50,7 +50,7 @@ Feature: Payments
       |    EmptyAllFields             |
 
   @search
-  Scenario: Verify Search functionality on Service Charge
+  Scenario: Verify Search functionality on Service Charge abc
     Given User is on Payments Screen
     When User Search Service Charge on Search Bar
     Then User Able to Search Item on Service Charge
