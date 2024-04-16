@@ -12,6 +12,8 @@ public class PaymentsScreen extends BasePage {
 
     @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@content-desc,'Payment')]")
     private WebElement payments;
+    @AndroidFindBy(xpath = "(//android.view.View[contains(@content-desc,'ARCHIVE')])/android.view.View[1]")
+    private WebElement SearchBarPayments;
 
     public void onPayments() {
 
@@ -50,12 +52,15 @@ public class PaymentsScreen extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.EditText[@text='0.00']")
     private WebElement taxAmountField;
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='SAVE']")
-    private WebElement SAVE;
+    public WebElement SAVE;
 
     @AndroidFindBy(xpath = "//android.widget.Toast[contains(@text,'Amount can')]")
     private WebElement emptyTaxAmountErrMsg;
     @AndroidFindBy(xpath = "//android.widget.Toast[@text='Please set a name']")
     private WebElement pleaseSetANameErrMsg;
+    @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, 'Sales Tax')]")
+    private WebElement taxFirstField;
+
 
 
     public void addTaxDetails(String val){
@@ -107,6 +112,23 @@ public class PaymentsScreen extends BasePage {
         }
     }
 
+    public void searchTax(){
+
+        clickOnElement(taxes);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        clickOnElement(SearchBarPayments);
+        clickOnElement(menuManagementScreen.searchBar);
+        clearText(menuManagementScreen.searchBar);
+        typeTextIntoElement(menuManagementScreen.searchBar,"Sales Tax");
+    }
+    public void validateSearchTax(){
+        Assert.assertTrue(taxFirstField.isDisplayed());
+    }
+
     //---> Discounts
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Discounts']")
@@ -117,6 +139,8 @@ public class PaymentsScreen extends BasePage {
     private WebElement discountAmountErrMsg;
     @AndroidFindBy(xpath = "//android.widget.EditText[contains(@text,'0.00')]")
     private WebElement discountAmountField;
+    @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, 'Sales discount')]")
+    private WebElement discountFirstField;
 
     public void addDiscountDetails(String val){
         clickOnElement(discounts);
@@ -145,8 +169,7 @@ public class PaymentsScreen extends BasePage {
         } else if (val.equalsIgnoreCase("EmptyAllFields")) {
 
             clickOnElement(discountNameField);
-        }
-        clickOnElement(SAVE);
+        }clickOnElement(SAVE);
     }
     public void discountsErrMsg(String val){
 
@@ -166,6 +189,22 @@ public class PaymentsScreen extends BasePage {
             Assert.assertEquals(Expected,pleaseSetANameErrMsg.getText());
         }
     }
+    public void searchDiscount(){
+
+        clickOnElement(discounts);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        clickOnElement(SearchBarPayments);
+        clickOnElement(menuManagementScreen.searchBar);
+        clearText(menuManagementScreen.searchBar);
+        typeTextIntoElement(menuManagementScreen.searchBar,"Sales discount");
+    }
+    public void validateSearchDiscount(){
+        Assert.assertTrue(discountFirstField.isDisplayed());
+    }
 
     //---> Service Charge
 
@@ -179,6 +218,8 @@ public class PaymentsScreen extends BasePage {
     private WebElement emptyServiceChargeAmountErrMsg;
     @AndroidFindBy(xpath = "//android.widget.Toast[@text='Please set name']")
     private WebElement pleaseSetNameErrMsg;
+    @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, 'Delivery charge')]")
+    private WebElement serviceChargeFirstField;
 
     public void addServiceChargeDetails(String val){
         clickOnElement(serviceCharge);
@@ -228,5 +269,21 @@ public class PaymentsScreen extends BasePage {
             String Expected ="Please set name";
             Assert.assertEquals(Expected,pleaseSetNameErrMsg.getText());
         }
+    }
+    public void searchServiceCharge(){
+
+        clickOnElement(serviceCharge);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        clickOnElement(SearchBarPayments);
+        clickOnElement(menuManagementScreen.searchBar);
+        clearText(menuManagementScreen.searchBar);
+        typeTextIntoElement(menuManagementScreen.searchBar,"Delivery charge");
+    }
+    public void validateSearchServiceCharge(){
+        Assert.assertTrue(serviceChargeFirstField.isDisplayed());
     }
 }
