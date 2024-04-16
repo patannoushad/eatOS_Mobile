@@ -2,7 +2,7 @@
 Feature: Payments
 
   @taxes
-  Scenario Outline: Validate Tax Details  <condition>
+  Scenario Outline: Validate Tax Details  <condition> abc
     Given User is on Payments Screen
     When User adds "<condition>" Tax details
     Then User gets errorMsg for "<condition>" Tax Details
