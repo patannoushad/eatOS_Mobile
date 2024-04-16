@@ -24,13 +24,11 @@ public class BasePage {
     private AppiumDriver driver;
     CommonUtils utils = new CommonUtils();
 
-
     public BasePage(){
         this.driver = new DriverManager().getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
-
     public void waitForVisibility(WebElement e) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(CommonUtils.WAIT));
         wait.until(ExpectedConditions.visibilityOf(e));
@@ -39,7 +37,6 @@ public class BasePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(CommonUtils.LongWAIT));
         wait.until(ExpectedConditions.visibilityOf(e));
     }
-
     public void waitForVisibility(By e) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(CommonUtils.WAIT));
         wait.until(ExpectedConditions.visibilityOfElementLocated(e));
@@ -291,7 +288,5 @@ public class BasePage {
         t.press(point(startX, startY)).waitAction(waitOptions(ofMillis(millis))).moveTo(point(endX, endY)).release()
                 .perform();
     }*/
-
-
 
 }

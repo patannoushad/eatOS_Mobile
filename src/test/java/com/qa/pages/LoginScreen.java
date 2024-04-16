@@ -220,28 +220,28 @@ public class LoginScreen extends BasePage  {
     private WebElement Title;
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='1']")
-    private WebElement Pin1;
+    public WebElement Pin1;
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='2']")
-    private WebElement Pin2;
+    public WebElement Pin2;
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='3']")
-    private WebElement Pin3;
+    public WebElement Pin3;
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='4']")
-    private WebElement Pin4;
+    public WebElement Pin4;
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='5']")
-    private WebElement Pin5;
+    public WebElement Pin5;
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='6']")
-    private WebElement Pin6;
+    public WebElement Pin6;
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='7']")
-    private WebElement Pin7;
+    public WebElement Pin7;
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='8']")
-    private WebElement Pin8;
+    public WebElement Pin8;
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='9']")
-    private WebElement Pin9;
+    public WebElement Pin9;
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='0']")
     public WebElement Pin0;
 
     @AndroidFindBy (xpath = "//android.view.View[@content-desc='ENTER']")
-    private WebElement enter;
+    public WebElement enter;
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='com.eatos.pos:id/ib_core_tv_title']")
     private WebElement instaBug;
     @AndroidFindBy(accessibility = "Custom Item Tab 2 of 2")

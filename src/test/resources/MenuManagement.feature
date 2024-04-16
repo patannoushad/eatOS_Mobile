@@ -12,11 +12,11 @@ Feature: Menu Management
       |    EmptyMenuName      |
       |    NumMenuName        |
 
-    @search
-    Scenario: Verify Search functionality on Menu
-      Given User is on Menu management Screen
-      When User Search menu on Search Bar
-      Then User Able to Search Item on Menu
+  @search
+  Scenario: Verify Search functionality on Menu
+    Given User is on Menu management Screen
+    When User Search menu on Search Bar
+    Then User Able to Search Item on Menu
 
   @Category
   Scenario Outline: Validate Category Details for Different <condition>

@@ -13,7 +13,6 @@ public class RestaurantScreen extends BasePage{
 
     @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@content-desc,'Restaurant')]")
     private WebElement restaurant;
-
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='New Customer']/android.widget.ImageView")
     private WebElement closeDialogRestaurant;
     @AndroidFindBy(xpath = "(//android.widget.ImageView)[1]")
@@ -21,6 +20,7 @@ public class RestaurantScreen extends BasePage{
 
 
     public void onRestaurant() {
+
 
         int maxAttempts = 20;
         int currentAttempt = 1;

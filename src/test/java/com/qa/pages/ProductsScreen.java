@@ -10,10 +10,8 @@ public class ProductsScreen extends BasePage {
 	
 	@AndroidFindBy (xpath = "//android.widget.TextView[@text='PRODUCTS']")
 	private WebElement titleTxt;
-
 	@AndroidFindBy (xpath = "//android.view.View[@content-desc=\"Settings Tab 4 of 4\"]")
 	public WebElement settingsButton;
-
 	@AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]")
 	public WebElement settingsFrame;
 

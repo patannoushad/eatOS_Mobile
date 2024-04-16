@@ -42,7 +42,6 @@ public class MenuManagementStepDef {
     public void userGetsErrorMsgOnMenuDetails(String val){
         new MenuManagementScreen().getMenuErrorMsg(val);
     }
-
     @When("User Search menu on Search Bar")
     public void userSearchMenuOnSearchBar(){
         new MenuManagementScreen().searchMenu();
@@ -119,7 +118,6 @@ public class MenuManagementStepDef {
     public void userGetsErrorMsgOnProducts(String val){
         new MenuManagementScreen().getProductsErrorMsg(val);
     }
-
     @When("User Search Products on Search Bar")
     public void userSearchProductsOnSearchBar(){
         new MenuManagementScreen().searchProducts();
@@ -139,7 +137,6 @@ public class MenuManagementStepDef {
     public void userGetsErrorMsgOnIngredients(String val){
         new MenuManagementScreen().getIngredientErrorMsg(val);
     }
-
     @When("User Search Ingredients on Search Bar")
     public void userSearchIngredientsOnSearchBar(){
         new MenuManagementScreen().searchIngredients();

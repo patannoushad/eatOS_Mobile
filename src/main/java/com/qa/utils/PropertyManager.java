@@ -19,5 +19,4 @@ public class PropertyManager {
     public static String getProperty(String key) {
         return props.getProperty(key);
     }
-
 }

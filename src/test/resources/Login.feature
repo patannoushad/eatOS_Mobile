@@ -19,6 +19,20 @@ Feature: Login scenarios
       | allEmptyFields|
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  # Scenario Outline: Validate Login Functionality with Valid PIN
   #  When User enter username as "<username>"
    # And User enter password as "<password>"

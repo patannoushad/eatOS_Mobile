@@ -10,8 +10,6 @@ import org.testng.Assert;
 
 public class LoginStepDef {
 
-
-
     @Given("User opens the Applications")
     public void   GivenUserOpensTheApplications(){
     }

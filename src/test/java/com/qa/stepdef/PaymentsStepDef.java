@@ -24,6 +24,14 @@ public class PaymentsStepDef {
     public void userGetsErrorMsgOnMenuDetails(String val){
         new PaymentsScreen().taxesErrMsg(val);
     }
+    @When("User Search Tax on Search Bar")
+    public void userSearchTaxOnSearchBar(){
+        new PaymentsScreen().searchTax();
+    }
+    @Then("User Able to Search Item on Tax")
+    public void userAbleToSearchItemOnTax(){
+        new PaymentsScreen().validateSearchTax();
+    }
 
     //---> Discounts
 
@@ -34,6 +42,14 @@ public class PaymentsStepDef {
     @Then("User gets errorMsg for {string} Discount Details" )
     public void userGetsErrorMsgOnDiscountDetails(String val){
         new PaymentsScreen().discountsErrMsg(val);
+    }
+    @When("User Search Discount on Search Bar")
+    public void userSearchDiscountOnSearchBar(){
+        new PaymentsScreen().searchDiscount();
+    }
+    @Then("User Able to Search Item on Discount")
+    public void userAbleToSearchItemOnDiscount(){
+        new PaymentsScreen().validateSearchDiscount();
     }
 
 
@@ -47,5 +63,12 @@ public class PaymentsStepDef {
     public void userGetsErrorMsgOnServiceChargeDetails(String val){
         new PaymentsScreen().serviceChargeErrMsg(val);
     }
-
+    @When("User Search Service Charge on Search Bar")
+    public void userSearchServiceChargeOnSearchBar(){
+        new PaymentsScreen().searchServiceCharge();
+    }
+    @Then("User Able to Search Item on Service Charge")
+    public void userAbleToSearchItemOnServiceCharge(){
+        new PaymentsScreen().validateSearchServiceCharge();
+    }
 }

@@ -12,21 +12,14 @@ public class MenuManagementScreen extends BasePage{
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='ALMOST THERE PLEASE WAIT']")
     public WebElement loadingWait;
-
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView")
     public WebElement topDropDown;
-
-
     @AndroidFindBy(xpath = "//android.widget.EditText")
     public WebElement searchBar;
-
     @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@content-desc,'Menu Management')]")
     private WebElement menuManagement;
-
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'+ ADD')]")
     public WebElement ADD;
-
     @AndroidFindBy(xpath = "//android.widget.ImageView")
     public WebElement closeDialog;
 
@@ -35,7 +28,6 @@ public class MenuManagementScreen extends BasePage{
 
     @AndroidFindBy(xpath = "//android.widget.EditText")
     private WebElement sendTextSearBar;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'AbcdCat')]")
     private WebElement searchSendText;
 
@@ -382,19 +374,14 @@ public class MenuManagementScreen extends BasePage{
 
     @AndroidFindBy(xpath = "(//android.view.View[@content-desc='Products'])[1]")
     private WebElement products;
-
     @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Product Name']")
     private WebElement productsNameField;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'Product Name should be set')]")
     private WebElement emptyProductNameErrMsg;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'Product Name already exists')]")
     private WebElement existingProductNameErrMsg;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, 'Absolut')]")
     private WebElement productsFirstField;
-
     @AndroidFindBy(xpath = "((//android.view.View[@content-desc='Products'])[2])/android.view.View[2]")
     private WebElement searchBarIconProducts;
 
@@ -453,19 +440,14 @@ public class MenuManagementScreen extends BasePage{
 
     @AndroidFindBy(xpath = "(//android.view.View[@content-desc='Ingredients'])[1]")
     private WebElement ingredients;
-
     @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Name']")
     private WebElement ingredientNameField;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'Ingredient Name cannot be empty')]")
     private WebElement emptyIngredientNameErrMsg;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'already exists')]")
     private WebElement existingIngredientNameErrMsg;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, 'Avocado')]")
     private WebElement ingredientFirstField;
-
     @AndroidFindBy(xpath = "((//android.view.View[@content-desc='Ingredients'])[2])/android.view.View[2]")
     private WebElement searchBarIconIngredient;
 
@@ -494,11 +476,9 @@ public class MenuManagementScreen extends BasePage{
     public void getIngredientErrorMsg(String val){
         if(val.equals("ValidIngredientsDetails")){
 
-        }
-        else if (val.equalsIgnoreCase("EmptyIngredientsName")) {
+        } else if (val.equalsIgnoreCase("EmptyIngredientsName")) {
             Assert.assertTrue(emptyIngredientNameErrMsg.isDisplayed());
-        }
-        else if (val.equalsIgnoreCase("ExistingIngredientsName")) {
+        } else if (val.equalsIgnoreCase("ExistingIngredientsName")) {
             Assert.assertTrue(existingIngredientNameErrMsg.isDisplayed());
         }
     }
@@ -524,19 +504,14 @@ public class MenuManagementScreen extends BasePage{
 
     @AndroidFindBy(xpath = "(//android.view.View[@content-desc='Groups'])[1]")
     private WebElement groups;
-
     @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Group Name']")
     private WebElement groupsNameField;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'Modifier Name cannot be empty')]")
     private WebElement emptyGroupsNameErrMsg;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'Modifier Group Name already exists')]")
     private WebElement existingGroupsNameErrMsg;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, 'Bagels')]")
     private WebElement groupFirstField;
-
     @AndroidFindBy(xpath = "((//android.view.View[@content-desc='Groups'])[2])/android.view.View[2]")
     private WebElement searchBarIconGroup;
 
@@ -568,8 +543,7 @@ public class MenuManagementScreen extends BasePage{
         }
         else if (val.equalsIgnoreCase("EmptyGroupsName")) {
             Assert.assertTrue(emptyGroupsNameErrMsg.isDisplayed());
-        }
-        else if (val.equalsIgnoreCase("ExistingGroupsName")) {
+        } else if (val.equalsIgnoreCase("ExistingGroupsName")) {
             Assert.assertTrue(existingGroupsNameErrMsg.isDisplayed());
         }
     }
