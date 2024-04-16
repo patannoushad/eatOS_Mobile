@@ -1,7 +1,7 @@
 @payments @All
 Feature: Payments
 
-  @tax
+  @taxes
   Scenario Outline: Validate Tax Details  <condition>
     Given User is on Payments Screen
     When User adds "<condition>" Tax details
@@ -12,6 +12,12 @@ Feature: Payments
       |    EmptyTaxName      |
       |    EmptyTaxAmount    |
       |    EmptyAllFields    |
+
+  @search
+  Scenario: Verify Search functionality on Taxes
+    Given User is on Payments Screen
+    When User Search Tax on Search Bar
+    Then User Able to Search Item on Tax
 
   @discount
   Scenario Outline: Validate Discount Details  <condition>
@@ -25,6 +31,12 @@ Feature: Payments
       |    EmptyDiscountAmount   |
       |    EmptyAllFields        |
 
+  @search
+  Scenario: Verify Search functionality on Discounts
+    Given User is on Payments Screen
+    When User Search Discount on Search Bar
+    Then User Able to Search Item on Discount
+
   @serviceCharge
   Scenario Outline: Validate Service Charge Details  <condition>
     Given User is on Payments Screen
@@ -36,3 +48,9 @@ Feature: Payments
       |    EmptyServiceChargeName     |
       |    EmptyServiceChargeAmount   |
       |    EmptyAllFields             |
+
+  @search
+  Scenario: Verify Search functionality on Service Charge
+    Given User is on Payments Screen
+    When User Search Service Charge on Search Bar
+    Then User Able to Search Item on Service Charge
