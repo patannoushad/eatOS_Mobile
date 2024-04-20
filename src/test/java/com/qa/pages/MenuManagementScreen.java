@@ -12,7 +12,8 @@ public class MenuManagementScreen extends BasePage{
 
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='ALMOST THERE PLEASE WAIT']")
     public WebElement loadingWait;
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id='android:id/content']/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView")
+            //(xpath = "(//android.view.View[last()]/android.widget.ImageView)[last()]")
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView")
     public WebElement topDropDown;
     @AndroidFindBy(xpath = "//android.widget.EditText")
     public WebElement searchBar;
@@ -49,7 +50,7 @@ public class MenuManagementScreen extends BasePage{
         while (currentAttempt <= maxAttempts) {
             try {
                 if (currentAttempt == 1) {
-                    loginScreen.login("np3@eigital.com", "@Password123");
+                    loginScreen.login("np5@eigital.com","@Password123");
                     loginScreen.pressLoginBtn();
                     loginScreen.enterLoginPin();
                 } else {
@@ -61,31 +62,42 @@ public class MenuManagementScreen extends BasePage{
                 currentAttempt++;
             }
         }
-
+//try {
+//
+//    if (loginScreen.loginBtn.isDisplayed()) {
+//        if(loginScreen.instaBug().isDisplayed()){
+//            Thread.sleep(5000);
+//        }
+//        loginScreen.login("np5@eigital.com", "@Password123");
+//        loginScreen.pressLoginBtn();
+//        loginScreen.enterLoginPin();
+//    } else {
+//        loginScreen.enterLoginPin();
+//    }
+//}catch (Exception e) {
+//    System.out.println( " Exception occurred: " + e.getClass().getSimpleName());
+//
+//}
         clickOnElement(newOrderScreen.newOrderModule);
         waitForVisibility(topDropDown);
-        clickOnElement(topDropDown);
-        clickOnElement(menuManagement);
+        clickOnElement(topDropDown,"Click on Top Dropdown");
+        waitForVisibility(menuManagement);
+        clickOnElement(menuManagement,"click on menu management");
     }
 
     //---> Menu
 
     @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Menu Name']")
     private WebElement menuNameField;
-
     @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Menu Name']")
     private WebElement existingMenuErrMsg;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'Menu Name cannot be empty')]")
     private WebElement emptyMenuErrMsg;
-
     @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Menu Name']")
     private WebElement invalidMenuErrMsg;
-
     @AndroidFindBy(xpath = "((//android.view.View[@content-desc='Menu'])[2])/android.view.View[2]")
     private WebElement searchBarIconMenu;
-
-    @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, 'BAR MENU')]")
+    @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, 'Menu One')]")
     private WebElement menuFirstField;
 
 
@@ -100,19 +112,24 @@ public class MenuManagementScreen extends BasePage{
         switch (val) {
             case "ValidMenuDetails" -> {
                 clickOnElement(menuNameField);
-                typeTextIntoElement(menuNameField, "testMenu");
+                typeTextIntoElement(menuNameField, "Menu One");
             }
             case "EmptyMenuName" -> clickOnElement(menuNameField);
             case "NumMenuName" -> {
                 clickOnElement(menuNameField);
-                typeTextIntoElement(menuNameField, "1234", "MenuName");
+                typeTextIntoElement(menuNameField, "12345");
             }
         }
         clickOnElement(closeDialog);
     }
+
     public void getMenuErrorMsg(String val){
         if(val.equals("ValidMenuDetails")){
-
+            clickOnElement(searchBarIconMenu);
+            clickOnElement(searchBar);
+            clearText(searchBar);
+            typeTextIntoElement(searchBar,"Menu One");
+            Assert.assertTrue(menuFirstField.isDisplayed());
         }
         else if (val.equalsIgnoreCase("EmptyMenuName")) {
 
@@ -132,7 +149,7 @@ public class MenuManagementScreen extends BasePage{
         clickOnElement(searchBarIconMenu);
         clickOnElement(searchBar);
         clearText(searchBar);
-        typeTextIntoElement(searchBar,"BAR MENU");
+        typeTextIntoElement(searchBar,"Menu One");
     }
 
     public void validateSearchMenu(){
@@ -143,22 +160,16 @@ public class MenuManagementScreen extends BasePage{
 
     @AndroidFindBy(xpath = "(//android.view.View[@content-desc='Categories'])[1]")
     private WebElement categories;
-
     @AndroidFindBy(xpath = "//android.widget.EditText[@hint='Category Name']")
     private WebElement categoryName;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'Category Name already exists')]")
     private WebElement existingCategoryErrMsg;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'Category Name cannot be empty')]")
     public WebElement emptyCategoryErrMsg;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'Category Name cannot be number')]")
     private  WebElement invalidDataTypeCategoryErrMsg;
-
     @AndroidFindBy(xpath = "((//android.view.View[@content-desc='Categories'])[2])/android.view.View[2]")
     private WebElement searchBarIconCategory;
-
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, 'BAKERY')]")
     private WebElement categoryFirstField;
 

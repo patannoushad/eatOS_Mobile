@@ -51,6 +51,10 @@ public class BasePage {
         waitForVisibility(e);
         e.click();
     }
+    public void clickOnElement1(WebElement element)  {
+        WebElement webElement = waitForElement(element);
+        webElement.click();
+    }
 
     public void clickOnElement(WebElement e, String msg) {
         waitForVisibility(e);

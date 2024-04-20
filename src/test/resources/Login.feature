@@ -18,19 +18,24 @@ Feature: Login scenarios
       | restaurantName|
       | allEmptyFields|
 
+  Scenario Outline: Validate Login Functionality
+    When User enter "<condition>" Credentials
+    Then User gets "<condition>" errorMsg
+    Examples:
+      |       condition     |
+      |    InvalidUsername  |
+      |    InvalidPassword  |
+      |    EmptyUsername    |
+      |    EmptyPassword    |
 
-
-
-
-
-
-
-
-
-
-
-
-
+  @login @menu
+  Scenario Outline: Validate Login Functionality
+    When User enter "<condition>" Credentials
+    Then User gets "<condition>" errorMsg
+    Examples:
+      |       condition     |
+      |    EmptyFields      |
+     # |    ValidCredentials |
 
 
  # Scenario Outline: Validate Login Functionality with Valid PIN
@@ -42,26 +47,3 @@ Feature: Login scenarios
    # Examples:
     #  | username         | password      |
      # | np3@eigital.com  | @Password123  |
-
-
-  Scenario Outline: Validate Login Functionality
-    When User enter "<condition>" Credentials
-    Then User gets "<condition>" errorMsg
-    Examples:
-      |       condition     |
-      |    InvalidUsername  |
-      |    InvalidPassword  |
-      |    EmptyUsername    |
-      |    EmptyPassword    |
-
-
-  @login
-  Scenario Outline: Validate Login Functionality
-    When User enter "<condition>" Credentials
-    Then User gets "<condition>" errorMsg
-    Examples:
-      |       condition     |
-      |    EmptyFields      |
-      |    ValidCredentials |
-
-

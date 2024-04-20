@@ -2,17 +2,17 @@
 Feature: Menu Management
 
   @menu
-  Scenario Outline: Validate Menu Details for Different <condition>
+  Scenario Outline: Validate Menu Details for Different "<condition>"
     Given User is on Menu management Screen
     When User adds "<condition>" Menu details
     Then User gets errorMsg for "<condition>" Menu Details
     Examples:
       |       condition       |
-    # |    ValidMenuDetails   |
+     |    ValidMenuDetails   |
       |    EmptyMenuName      |
       |    NumMenuName        |
 
-  @search
+  @search @menu
   Scenario: Verify Search functionality on Menu
     Given User is on Menu management Screen
     When User Search menu on Search Bar

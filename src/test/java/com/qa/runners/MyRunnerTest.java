@@ -18,7 +18,7 @@ import static io.cucumber.testng.CucumberOptions.SnippetType.CAMELCASE;
         ,glue = {"com.qa.stepdef"}
         ,snippets = CAMELCASE
         ,monochrome=true
-        ,tags = "@workforce"
+        ,tags = "@login"
 )
 public class MyRunnerTest extends AbstractTestNGCucumberTests {
 

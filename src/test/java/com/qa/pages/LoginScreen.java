@@ -243,7 +243,7 @@ public class LoginScreen extends BasePage  {
     @AndroidFindBy (xpath = "//android.view.View[@content-desc='ENTER']")
     public WebElement enter;
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='com.eatos.pos:id/ib_core_tv_title']")
-    private WebElement instaBug;
+    public WebElement instaBug;
     @AndroidFindBy(accessibility = "Custom Item Tab 2 of 2")
     private WebElement customItem;
 
@@ -365,13 +365,14 @@ public class LoginScreen extends BasePage  {
             case "EmptyFields" -> {
                 clickOnElement(usernameTxtFld);
                 clearText(usernameTxtFld);
+                waitForVisibility(passwordTxtFld);
                 clickOnElement(passwordTxtFld);
                 clearText(passwordTxtFld);
             }
             case "ValidCredentials" -> {
                 clickOnElement(usernameTxtFld);
                 clearText(usernameTxtFld);
-                typeTextIntoElement(usernameTxtFld, "np3@eigital.com");
+                typeTextIntoElement(usernameTxtFld, "np5@eigital.com");
                 clickOnElement(passwordTxtFld);
                 clearText(passwordTxtFld);
                 typeTextIntoElement(passwordTxtFld, "@Password123");
@@ -418,7 +419,8 @@ public class LoginScreen extends BasePage  {
         else if (val.equalsIgnoreCase("ValidCredentials")) {
 //            String Expected = "PRODUCTS";
 //            Assert.assertEquals(Expected,new ProductsScreen().getTitle());
-            Assert.assertTrue(new NewOrderScreen().newOrderModule.isDisplayed());
+ //           Assert.assertTrue(new NewOrderScreen().newOrderModule.isDisplayed());
+            Assert.assertTrue(new MenuManagementScreen().topDropDown.isDisplayed());
         }
     }
 }

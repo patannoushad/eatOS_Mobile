@@ -1,12 +1,11 @@
 package com.qa.stepdef;
 
 import com.qa.pages.LoginScreen;
-import com.qa.pages.ProductsScreen;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.testng.Assert;
+
 
 public class LoginStepDef {
 
@@ -51,8 +50,6 @@ public class LoginStepDef {
         //      Assert.assertTrue(new NewOrderPage().empName.isDisplayed());
 
     }
-
-
     @When("User enter {string} Credentials")
     public void userEnter_Condition_Credentials(String val) {
         new LoginScreen().enterCred(val);
