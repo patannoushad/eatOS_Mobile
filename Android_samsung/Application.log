@@ -1,0 +1,5 @@
+[Android_samsung INFO ] 2024-05-20 20:16:28.973 ServerManager:20 - starting appium server
+[Android_samsung INFO ] 2024-05-20 20:16:38.567 ServerManager:29 - Appium server started
+[Android_samsung INFO ] 2024-05-20 20:16:38.601 DriverManager:26 - initializing Appium driver
+[Android_samsung INFO ] 2024-05-20 20:16:38.622 CapabilitiesManager:13 - getting capabilities
+[Android_samsung INFO ] 2024-05-20 20:16:38.642 CapabilitiesManager:30 - appUrl isC:\Users\PATAN MUNNA\Downloads\POS-4.10.5.148-15Apr2024-Staging-Sunmi.apk
